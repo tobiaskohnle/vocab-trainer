@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Vocab Trainer</title>
+
+<meta charset='utf-8'>
+<meta content='height=device-height, width=device-width, initial-scale=1' name='viewport'>
+
+<link class='custom-stylesheet' rel='stylesheet' type='text/css' href='source/style-light.css'>
+
+<link rel='shortcut icon' type='image/png' href='resources/favicon.png'>
+
+<script src='vocab/vocab-35.js'></script>
+<script src='vocab/vocab-37.js'></script>
+<script src='vocab/vocab-39.js'></script>
+<script src='vocab/vocab-41.js'></script>
+<script src='vocab/vocab-43.js'></script>
+<script src='vocab/vocab-45.js'></script>
+<script src='vocab/vocab-47.js'></script>
+<script src='vocab/vocab-49.js'></script>
+<script src='vocab/vocab-51.js'></script>
+<script src='vocab/vocab-53.js'></script>
+<script src='vocab/vocab-55.js'></script>
+<script src='vocab/vocab-57.js'></script>
+<script src='vocab/vocab-77.js'></script>
+<script src='vocab/vocab-79.js'></script>
+<script src='vocab/vocab-81.js'></script>
+<script src='vocab/vocab-83.js'></script>
+<script src='vocab/vocab-85.js'></script>
+<script src='vocab/vocab-87.js'></script>
+<script src='vocab/vocab-89.js'></script>
+<script src='vocab/vocab-91.js'></script>
+<script src='vocab/vocab-167.js'></script>
+<script src='vocab/vocab-169.js'></script>
+<script src='vocab/vocab-171.js'></script>
+<script src='vocab/vocab-173.js'></script>
+<script src='vocab/vocab-201.js'></script>
+<script src='vocab/vocab-203.js'></script>
+<script src='vocab/vocab-205.js'></script>
+<script src='vocab/vocab-207.js'></script>
+<script src='vocab/vocab-215.js'></script>
+<script src='vocab/vocab-217.js'></script>
+<script src='vocab/vocab-219.js'></script>
+<script src='vocab/vocab-sport.js'></script>
+<script src='vocab/vocab-environment.js'></script>
+
+<script src='source/latest_vocab.js'></script>
+<script src='source/main.js'></script>
+<script src='source/menu.js'></script>
+<script src='source/vocab.js'></script>
+<script src='source/settings.js'></script>
+
+<link rel='stylesheet' type='text/css' href='source/style.css'>
+
+</head>
+
+<body>
+
+<div class='popup-container' onclick='popup_container_click(event)'>
+    <div class='popup popup-info'>
+        <div class='popup-row'>
+            <span></span>
+        </div>
+        <div class='popup-row'>
+            <button class='popup-button confirm'>OK</button>
+        </div>
+    </div>
+    <div class='popup popup-confirm'>
+        <div class='popup-row'>
+            <span></span>
+        </div>
+        <div class='popup-row'>
+            <button class='popup-button confirm'>Confirm</button>
+            <button class='popup-button cancel' onclick='close_popup()'>Cancel</button>
+        </div>
+    </div>
+    <div class='popup popup-query'>
+        <div class='popup-row'>
+            <input>
+        </div>
+        <div class='popup-row'>
+            <span></span>
+        </div>
+        <div class='popup-row'>
+            <button class='popup-button update'>Check Query</button>
+        </div>
+        <div class='popup-row'>
+            <button class='popup-button confirm'>Add Cards</button>
+            <button class='popup-button cancel' onclick='close_popup()'>Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div class='container'>
+    <div class='bar bar-section'></div>
+    <div class='bar bar-marked'></div>
+
+    <form class='card'>
+        <div class='card-image' style='display:none;'>
+            <div class='resize-button'></div>
+        </div>
+        <div class='card-item text'></div>
+        <input type='text' class='card-item input' oninput='card_oninput();'
+            autocorrect='off' autocapitalize='off' spellcheck='false' type='text'/>
+        <button type='submit' class='card-item button' onclick='check_current_vocab();' disabled></button>
+    </form>
+
+    <div class='menu-container'>
+        <button class='menu-button' onclick='toggle_menu();'></button>
+        <div class='menu'>
+            <label class='menu-item' onclick='new_vocab();close_menu();'>
+                <span>Next Vocab</span>
+            </label>
+            <div class='menu-separator'></div>
+            <label class='menu-item hard-menu-item' onclick='mark_current_vocab(marked.hard);'>
+                <span>Mark: Difficult<br><span class='description'>Ask very frequently</span></span>
+            </label>
+            <label class='menu-item tough-menu-item' onclick='mark_current_vocab(marked.tough);'>
+                <span>Mark: Tough<br><span class='description'>Ask more frequently</span></span>
+            </label>
+            <label class='menu-item easy-menu-item' onclick='mark_current_vocab(marked.easy);'>
+                <span>Mark: Easy<br><span class='description'>Ask less frequently</span></span>
+            </label>
+            <label class='menu-item ignore-menu-item' onclick='mark_current_vocab(marked.ignore);'>
+                <span>Mark: Ignore<br><span class='description'>No longer ask</span></span>
+            </label>
+            <div class='menu-separator'></div>
+            <label class='menu-item'>
+                <span>Dark Theme</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='dark_theme' onchange='update_setting(this);update_theme();'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item'>
+                <span>Retype Incorrect Vocab</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='retype_incorrect_vocab' onchange='update_setting(this);'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <div class='menu-separator'></div>
+            <label class='menu-item'>
+                <span>English -> German</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='ask_for_english_translations' onchange='update_setting(this);'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item'>
+                <span>German -> English</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='ask_for_german_translations' onchange='update_setting(this);'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item hidden'>
+                <span>Ask Collocations</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='ask_for_collocations' onchange='update_setting(this);'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item hidden'>
+                <span>Ask Synonyms/Antonyms</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='ask_for_synonyms' onchange='update_setting(this);'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item hidden'>
+                <span>Ask Verb Forms</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='ask_for_forms' onchange='update_setting(this);'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <div class='menu-separator hidden'></div>
+            <label class='menu-item hidden'>
+                <span>Use Sections</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='use_sections' onchange='clear_filter();update_setting(this);update_card();'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item hidden'>
+                <span>Show Card Border</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='show_info' onchange='clear_filter();update_setting(this);update_card();'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item hidden'>
+                <span>Show Unmarked Cards</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='show_unmarked' onchange='clear_filter();update_setting(this);update_card();'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item hidden'>
+                <span>Prioritize Vocab</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='prioritize_vocab' onchange='update_setting(this);'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item hidden'>
+                <span>Visualize Mistakes</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='visualize_mistakes' onchange='update_setting(this);'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <div class='menu-separator hidden'></div>
+            <a class='menu-item hidden' href='editor'>
+                <span>Open Vocab Editor</span>
+            </a>
+            <label class='menu-item hidden' onclick='close_menu();open_popup_query(latest_vocab);'>
+                <span>Load Latest Vocab</span>
+            </label>
+            <label class='menu-item hidden' onclick='close_menu();open_popup_query();'>
+                <span>Load Vocab</span>
+            </label>
+            <label class='menu-item hidden' onclick='close_menu();open_popup_query("files");'>
+                <span>Upload Vocab</span>
+            </label>
+            <div class='menu-separator hidden'></div>
+            <label class='menu-item red-menu-item hidden' onclick='
+                close_menu();
+                open_popup_confirm("Remove every card?", function() {
+                    reset_progress();
+                    new_vocab();
+                    close_popup();
+                });
+            '>
+                <span>Remove Every Card</span>
+            </label>
+            <label class='menu-item red-menu-item hidden' onclick='
+                close_menu();
+                open_popup_confirm("Move all cards to first section?", function() {
+                    reset_sections();
+                    new_vocab();
+                    close_popup();
+                });
+            '>
+                <span>Reset Sections</span>
+            </label>
+            <label class='menu-item red-menu-item hidden' onclick='
+                close_menu();
+                open_popup_confirm("Unmark every card?", function() {
+                    reset_marked();
+                    close_popup();
+                });
+            '>
+                <span>Reset Markings</span>
+            </label>
+            <label class='menu-item red-menu-item hidden' onclick='
+                close_menu();
+                open_popup_confirm("Reset settings to default?", function() {
+                    reset_settings();
+                    close_popup();
+                });
+            '>
+                <span>Reset Settings</span>
+            </label>
+            <label class='menu-item' onclick='toggle_show_more();'>
+                <span class='menu-show-more'>...</span>
+            </label>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

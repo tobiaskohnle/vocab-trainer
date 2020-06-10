@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Vocab Editor</title>
+
+<meta charset='utf-8'>
+
+<link class='custom-stylesheet' rel='stylesheet' type='text/css' href='source/style-light.css'>
+<link rel='stylesheet' type='text/css' href='source/style.css'>
+
+<link rel='shortcut icon' type='image/png' href='resources/favicon.png'>
+
+<script src='../source/vocab.js'></script>
+<script src='../source/menu.js'></script>
+<script src='source/main.js'></script>
+
+<body>
+
+<div class='popup-container' onclick='popup_container_click(event)'>
+    <div class='popup popup-info'>
+        <div class='popup-row'>
+            <span></span>
+        </div>
+        <div class='popup-row'>
+            <button class='popup-button confirm'>OK</button>
+        </div>
+    </div>
+    <div class='popup popup-info-error'>
+        <div class='popup-row'>
+            <span></span>
+        </div>
+        <div class='popup-row'>
+            <button class='popup-button confirm'>OK</button>
+        </div>
+    </div>
+    <div class='popup popup-confirm'>
+        <div class='popup-row'>
+            <span></span>
+        </div>
+        <div class='popup-row'>
+            <button class='popup-button confirm'>Confirm</button>
+            <button class='popup-button cancel' onclick='close_popup()'>Cancel</button>
+        </div>
+    </div>
+    <div class='popup popup-confirm-error'>
+        <div class='popup-row'>
+            <span></span>
+        </div>
+        <div class='popup-row'>
+            <button class='popup-button confirm'>Confirm</button>
+            <button class='popup-button cancel' onclick='close_popup()'>Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div class='container'>
+    <div class='sidebar'>
+        <div class='new-vocab icon add' onclick='new_vocab();'></div>
+        <div></div>
+    </div>
+
+    <div class='menu-container'>
+        <button class='menu-button' onclick='toggle_menu();'></button>
+        <div class='menu'>
+            <label class='menu-item' onclick='save();close_menu();'>
+                <span>Save (Ctrl+S)</span>
+            </label>
+            <label class='menu-item' onclick='new_vocab();close_menu();'>
+                <span>New Vocab (Ctrl+Space)</span>
+            </label>
+            <label class='menu-item' onclick='remove_current_vocab();close_menu();'>
+                <span><span class='red-menu-item'>Delete Vocab</span> (Ctrl+Delete)</span>
+            </label>
+            <label class='menu-item' onclick='remove_all_current_vocab();close_menu();'>
+                <span class='red-menu-item'>Delete All Vocab</span>
+            </label>
+            <label class='menu-item' onclick='recompress_all_images_popup();close_menu();'>
+                <span class='red-menu-item'>Compress all images</span>
+            </label>
+            <div class='menu-separator'></div>
+            <label class='menu-item' onclick='export_vocab();close_menu();'>
+                <span class='blue-menu-item'>Export Vocab</span>
+            </label>
+            <label class='menu-item' onclick='upload_json();close_menu();'>
+                <span>Upload Vocab</span>
+            </label>
+            <label class='menu-item' onclick='download_json();close_menu();'>
+                <span>Download Vocab</span>
+            </label>
+            <label class='menu-item' onclick='load_example();close_menu();'>
+                <span>Load Example</span>
+            </label>
+            <div class='menu-separator'></div>
+            <label class='menu-item'>
+                <span>Dark Theme</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='dark_theme' onchange='update_setting(this);update_theme();'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item'>
+                <span>Auto Save</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='auto_save' onchange='update_setting(this);save();'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item'>
+                <span>Show Variants</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='show_variants' onchange='update_setting(this);update_variants();'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item'>
+                <span>Enable Macros</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='macros' onchange='update_setting(this);'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+            <label class='menu-item'>
+                <span>Auto Compress Images</span>
+                <label class='switch'>
+                    <input type='checkbox' setting='auto_compress_images' onchange='update_setting(this);'>
+                    <span class='slider'></span>
+                </label>
+            </label>
+        </div>
+    </div>
+
+    <div class='editor'>
+        <div class='editor-window'>
+            <div class='row'>
+                <span class='vocab-span-en'>en (foreign)</span>
+            </div>
+            <div class='row'>
+                <input class='input en'></input>
+            </div>
+            <div class='row variants en'>
+            </div>
+            <div class='row'>
+                <span class='vocab-span-de'>de (native)</span>
+            </div>
+            <div class='row'>
+                <input class='input de'></input>
+            </div>
+            <div class='row variants de'>
+            </div>
+            <div class='row'>
+                synonym <span class='vocab-span-synonym'>(=)</span>
+            </div>
+            <div class='row'>
+                <input class='input synonym'></input>
+            </div>
+            <div class='row variants synonym'>
+            </div>
+            <div class='row'>
+                antonym <span class='vocab-span-antonym'>(&#x2260;)</span>
+            </div>
+            <div class='row'>
+                <input class='input antonym'></input>
+            </div>
+            <div class='row variants antonym'>
+            </div>
+            <div class='row'>
+                verb form
+            </div>
+            <div class='row'>
+                <input class='input form'></input>
+            </div>
+            <div class='row variants form'>
+            </div>
+            <div class='row'>
+                collocation
+            </div>
+            <div class='row'>
+                <input class='input collocation'></input>
+            </div>
+            <div class='row variants collocation'>
+            </div>
+            <div class='row'>
+                collocation of
+            </div>
+            <div class='row'>
+                <input class='input collocation_of'></input>
+            </div>
+            <div class='row variants collocation_of'>
+            </div>
+            <div class='row'>
+                gaps
+            </div>
+            <div class='row'>
+                <textarea class='input gaps'></textarea>
+            </div>
+            <div class='row variants gaps'>
+            </div>
+            <div class='row'>
+                image
+            </div>
+            <div class='row image-row'>
+                <button class='image-button add-image-button'></button>
+                <span class='image-name'></span>
+                <button class='image-button remove-image-button'></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

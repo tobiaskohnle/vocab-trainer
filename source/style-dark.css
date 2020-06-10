@@ -1,0 +1,89 @@
+:root {
+    --background-color: #030305;
+    --color: #fff;
+
+    --selection-background-color: #37f7;
+
+    --slider-active-background-color: #28e;
+    --slider-inactive-background-color: #999;
+
+    --span-red-border-color: #f43;
+    --span-red-background-color: #faa;
+    --span-red-color: #300;
+
+    --span-blue-border-color: #34f;
+    --span-blue-background-color: #aaf;
+    --span-blue-color: #003;
+
+    --span-gray-color: #aaa;
+
+    --span-special-color: #55f;
+    --span-repeat-color: #f55;
+
+    --card-border-color: #fff;
+
+    --input-border-color: #aaa;
+
+    --button-color: #aaa;
+
+    --button-hover-enabled-color: #2f2;
+    --button-active-enabled-color: #0f0;
+    --button-disabled-color: #333;
+
+    --incorrect-card-border-color: #d43;
+    --incorrect-input-border-color: #c22;
+    --incorrect-input-color: #aaa;
+
+    --menu-background-color: #111;
+    --menu-item-hover-background-color: #fff1;
+    --menu-item-active-background-color: #fff2;
+
+    --red-menu-item-color: #f22;
+
+    --menu-separator-background-color: #555;
+    --menu-header-color: #777;
+    --menu-show-more-color: #777;
+
+    --menu-button-background-image: url('../resources/menu-dark.png');
+
+    --image-border-color: #aaa9;
+
+    --gap-color: #777;
+    --gap-background-color: #222;
+
+    --section-unseen-color: #444;
+    --section-0-color: #d12;
+    --section-1-color: #d51;
+    --section-2-color: #dd1;
+    --section-3-color: #3c1;
+    --section-4-color: #064;
+    --section-5-color: #179;
+    --section-6-color: #25e;
+    --section-7-color: #29d;
+    --section-8-color: #16d;
+    --section-9-color: #2ff;
+
+    --marked-hard-color: #a00;
+    --marked-tough-color: #f81;
+    --marked-easy-color: #18f;
+    --marked-ignore-color: #1ff;
+    --unmarked-color: #eee;
+
+    --popup-background-color: #111;
+    --popup-button-border-color: #000;
+
+    --popup-box-shadow-color: #0007;
+
+    --popup-button-confirm-background-color: #27f;
+    --popup-button-confirm-background-color-hover: #49f;
+    --popup-button-confirm-background-color-active: #6af;
+    --popup-button-cancel-background-color: #f33;
+    --popup-button-cancel-background-color-hover: #f55;
+    --popup-button-cancel-background-color-active: #f77;
+    --popup-button-update-background-color: #3c3;
+    --popup-button-update-background-color-hover: #5c5;
+    --popup-button-update-background-color-active: #7c7;
+
+    --popup-update-red-span-color: #f22;
+    --popup-update-green-span-color: #4f4;
+}

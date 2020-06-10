@@ -1,0 +1,78 @@
+
+html {
+    --color: #ccc;
+    --background-color: #000;
+
+    --inactive-color: #ccc4;
+    --active-color: #fff;
+
+    --todo-border-color: #f33;
+    --error-border-color: #f13;
+
+    --slider-active-background-color: #28e;
+    --slider-inactive-background-color: #999;
+
+    --menu-background-color: #111;
+    --menu-item-hover-background-color: #fff1;
+    --menu-item-active-background-color: #fff2;
+
+    --menu-separator-background-color: #555;
+    --menu-header-color: #777;
+    --menu-show-more-color: #777;
+
+    --menu-button-background-image: url('../resources/menu-dark.png');
+
+    --icon-add-background-color: #2d2;
+    --icon-add-hover-background-color: #5e5;
+    --icon-add-active-background-color: #7f7;
+
+    --icon-remove-background-color: #d22;
+    --icon-remove-hover-background-color: #e55;
+    --icon-remove-active-background-color: #f77;
+
+    --vocab-background-color: #2227;
+    --vocab-hover-background-color: #3337;
+    --vocab-active-background-color: #4447;
+
+    --vocab-selected-background-color: #3337;
+    --vocab-selected-hover-background-color: #4447;
+    --vocab-selected-active-background-color: #5557;
+
+    --sidebar-background-color: #6781;
+
+    --editor-window-background-color: #6781;
+
+    --input-border-color: #999;
+    --input-focus-border-color: #ddd;
+
+    --button-background-color: #2227;
+
+    --popup-background-color: #111;
+    --popup-button-border-color: #000;
+
+    --popup-box-shadow-color: #0007;
+
+    --popup-button-confirm-background-color: #27f;
+    --popup-button-confirm-background-color-hover: #49f;
+    --popup-button-confirm-background-color-active: #6af;
+    --popup-button-cancel-background-color: #f33;
+    --popup-button-cancel-background-color-hover: #f55;
+    --popup-button-cancel-background-color-active: #f77;
+    --popup-button-update-background-color: #3c3;
+    --popup-button-update-background-color-hover: #5c5;
+    --popup-button-update-background-color-active: #7c7;
+
+    --popup-update-red-span-color: #f22;
+    --popup-update-green-span-color: #4f4;
+
+    --red-menu-item-color: #f33;
+    --blue-menu-item-color: #29f;
+
+    --vocab-span-en-color: #f27;
+    --vocab-span-de-color: #2af;
+    --vocab-span-synonym-color: #3ff;
+    --vocab-span-antonym-color: #f33;
+
+    --add-image-button-color: #2f2;
+    --remove-image-button-color: #f13;
+}
