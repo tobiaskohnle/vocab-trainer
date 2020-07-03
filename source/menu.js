@@ -416,6 +416,10 @@ function load_vocab(query) {
         vocab_215,
         vocab_217,
         vocab_219,
+        vocab_221,
+        vocab_223,
+        vocab_225,
+        vocab_227,
         vocab_sport,
         vocab_environment,
     ];
@@ -455,6 +459,10 @@ function load_vocab(query) {
             '215',
             '217',
             '219',
+            '221',
+            '223',
+            '225',
+            '227',
             'sport',
             'environment',
         ];
